@@ -1,57 +1,37 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
-
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import {
-		AppRegistry,
-		StyleSheet,
-		Text,
-		View,
-		Navigator
+	AppRegistry,
+	Text,
+	TouchableHighlight,
+	View,
+	StyleSheet,
+	Navigator,
+	TextInput,
+	Alert,
 } from 'react-native';
 
-import Footer from './component/Footer.android.js'
+import Home from './component/home.android.js'
 
 export default class myProject extends Component {
 	render() {
-		let defaultPage = Footer;
+		let defaultName = 'Home';
+		let defaultComponent = Home;
 		return (
-		        < View >
-				< Navigator
-				initialRoute = {
-					{ name: '首页', component: defaultPage } }
-				configureScene = {
-					(route) => {
-						return Navigator.SceneConfigs.FloatFromRight; } }
-				renderScene = {
-					(route, navigator) => {
-						let Component = route.component;
-							return <Component {...route.params } navigator = { navigator }/> }} / >
-				< /View>
-						);
-				}
-		}
+			<Navigator 
+				initialRoute={{name: defaultName, component: defaultComponent}}
+				configureScene={(route) => {
+					return Navigator.SceneConfigs.FloatFromRight;
+				}}
+				renderScene={(route, navigator) => {
+					let Component = route.component;
+					return <Component {...route.params} navigator={navigator} />
+				}}
+			/>
+		)
+	}
+}
 
-const styles = StyleSheet.create({
-		container: {
-				flex: 1,
-				justifyContent: 'center',
-				alignItems: 'center',
-				backgroundColor: '#F5FCFF',
-		},
-		welcome: {
-				fontSize: 20,
-				textAlign: 'center',
-				margin: 10,
-		},
-		instructions: {
-				textAlign: 'center',
-				color: '#333333',
-				marginBottom: 5,
-		},
-});
+
+
 
 AppRegistry.registerComponent('myProject', () => myProject);

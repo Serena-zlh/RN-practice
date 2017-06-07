@@ -9,6 +9,7 @@ import {
 	View,
 	TextInput,
 	StyleSheet,
+	Image,
 } from 'react-native';
 
 import Login from './login.android.js'
@@ -17,19 +18,18 @@ import Main from './main.android.js'
 export default class Home extends Component {
 	_jumpMain() {
 		this.props.navigator.push({
-			name: 'Main',
+			type: 'user',
+			id: 'Main',
 			component: Main,
 		})
 	}
-
 	_jumpLogin() {
 		this.props.navigator.push({
-			name: 'Login',
+			type: 'admin',
+			id: 'Login',
 			component: Login,
 		})
 	}
-
-
 	render() {
 		return (
 			<View>
@@ -41,6 +41,7 @@ export default class Home extends Component {
 				<TouchableHighlight onPress={ () => this._jumpMain()}>
 					<Text>普通用户入口</Text>
 				</TouchableHighlight>
+				<Image style={{width:40,height:40}} source={require('../assets/img/test.png')} />
 			</View>
 		)
 	}

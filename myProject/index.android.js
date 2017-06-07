@@ -1,24 +1,18 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import {
 	AppRegistry,
-	Text,
-	TouchableHighlight,
-	View,
-	StyleSheet,
-	Navigator,
-	TextInput,
-	Alert,
+	Navigator
 } from 'react-native';
 
 import Home from './component/home.android.js'
 
 export default class myProject extends Component {
 	render() {
-		let defaultName = 'Home';
+		let defaultId = 'Home';
 		let defaultComponent = Home;
 		return (
 			<Navigator 
-				initialRoute={{name: defaultName, component: defaultComponent}}
+				initialRoute={{id: defaultId, component: defaultComponent}}
 				configureScene={(route) => {
 					return Navigator.SceneConfigs.FloatFromRight;
 				}}
@@ -30,8 +24,5 @@ export default class myProject extends Component {
 		)
 	}
 }
-
-
-
 
 AppRegistry.registerComponent('myProject', () => myProject);

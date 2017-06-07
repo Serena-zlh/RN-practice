@@ -1,3 +1,4 @@
+// import '../assets/css/main.css'
 import React, { Component, PropTypes } from 'react';
 import {
 	AppRegistry,
@@ -11,7 +12,7 @@ import {
 } from 'react-native';
 import Main from './main.android.js'
 import TopNav from './topNav.android.js'
-export default class Home extends Component {
+export default class Login extends Component {
 	constructor(props) {
 		super(props)
 		this.state = {
@@ -20,7 +21,7 @@ export default class Home extends Component {
 		}
 	}
 
-	_push() {
+	_login() {
 		if (!this.state.user || !this.state.pwd) {
 			Alert.alert(
 				'提示信息',
@@ -29,7 +30,7 @@ export default class Home extends Component {
 		} else {
 			console.log(this.props.navigator.getCurrentRoutes())
 			this.props.navigator.push({
-				name: 'Main',
+				id: 'Main',
 				component: Main,
 				params: {
 					user: this.state.user
@@ -57,15 +58,8 @@ export default class Home extends Component {
 						onChangeText = {(pwd) => this.setState( {pwd:pwd} )}
 					/>
 				</View>
-				<TouchableHighlight onPress={() => this._push()}>
+				<TouchableHighlight onPress={() => this._login()}>
 					<Text>登陆</Text>
-				</TouchableHighlight>
-				<TouchableHighlight onPress={() =>
-					Alert.alert(
-						'提示信息',
-						'欢迎使用',
-					) }>
-					<Text>提示</Text>
 				</TouchableHighlight>
 			</View>
 		)
